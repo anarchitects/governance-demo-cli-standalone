@@ -1,0 +1,21 @@
+{
+  "name": "cli-standalone",
+  "packageManager": "yarn@4.15.0",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "tsc -b",
+    "clean": "tsc -b --clean && find apps packages -type d -name dist -prune -exec rm -rf {} +",
+    "rebuild": "yarn clean && yarn build",
+    "governance:check": "agov check --workspace governance.workspace.yaml --profile governance.profile.json",
+    "governance:check:table": "agov check --workspace governance.workspace.yaml --profile governance.profile.json --format table",
+    "governance:check:json": "agov check --workspace governance.workspace.yaml --profile governance.profile.json --format json",
+    "governance:report": "agov check --workspace governance.workspace.yaml --profile governance.profile.json --format markdown --output governance-report.md"
+  },
+  "devDependencies": {
+    "@anarchitects/governance-cli": "^0.0.4",
+    "typescript": "~5.9.2"
+  }
+}

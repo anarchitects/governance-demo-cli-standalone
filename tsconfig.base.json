@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "strict": true,
+    "declaration": true,
+    "sourceMap": true,
+    "outDir": "dist",
+    "baseUrl": ".",
+    "paths": {
+      "@demo/booking-domain": ["packages/booking-domain/src/index.ts"],
+      "@demo/booking-application": ["packages/booking-application/src/index.ts"],
+      "@demo/booking-interface": ["packages/booking-interface/src/index.ts"],
+      "@demo/booking-infrastructure": ["packages/booking-infrastructure/src/index.ts"],
+      "@demo/customer-domain": ["packages/customer-domain/src/index.ts"],
+      "@demo/shared-kernel": ["packages/shared-kernel/src/index.ts"]
+    }
+  }
+}

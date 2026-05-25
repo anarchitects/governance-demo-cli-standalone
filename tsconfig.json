@@ -1,0 +1,12 @@
+{
+  "files": [],
+  "references": [
+    { "path": "apps/booking-api" },
+    { "path": "packages/booking-domain" },
+    { "path": "packages/booking-application" },
+    { "path": "packages/booking-interface" },
+    { "path": "packages/booking-infrastructure" },
+    { "path": "packages/customer-domain" },
+    { "path": "packages/shared-kernel" }
+  ]
+}

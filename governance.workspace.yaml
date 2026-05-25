@@ -1,0 +1,92 @@
+schemaVersion: 1
+workspace:
+  name: anarchitecture-demo-typescript-yarn-workspace
+  root: "."
+projects:
+  - name: booking-api
+    root: apps/booking-api
+    type: application
+    tags:
+      - domain:booking
+      - layer:interface
+    metadata:
+      owner: platform-team
+
+  - name: booking-interface
+    root: packages/booking-interface
+    type: library
+    tags:
+      - domain:booking
+      - layer:interface
+    metadata:
+      owner: booking-team
+
+  - name: booking-application
+    root: packages/booking-application
+    type: library
+    tags:
+      - domain:booking
+      - layer:application
+    metadata:
+      owner: booking-team
+
+  - name: booking-domain
+    root: packages/booking-domain
+    type: library
+    tags:
+      - domain:booking
+      - layer:domain
+    metadata:
+      owner: booking-team
+
+  - name: booking-infrastructure
+    root: packages/booking-infrastructure
+    type: library
+    tags:
+      - domain:booking
+      - layer:infrastructure
+    metadata:
+      owner: booking-team
+
+  - name: customer-domain
+    root: packages/customer-domain
+    type: library
+    tags:
+      - domain:customer
+      - layer:domain
+    metadata:
+      owner: customer-team
+
+  - name: shared-kernel
+    root: packages/shared-kernel
+    type: library
+    tags:
+      - domain:shared
+      - layer:domain
+    metadata:
+      owner: platform-team
+
+dependencies:
+  - source: booking-api
+    target: booking-interface
+    type: static
+
+  - source: booking-interface
+    target: booking-application
+    type: static
+
+  - source: booking-application
+    target: booking-domain
+    type: static
+
+  - source: booking-infrastructure
+    target: booking-domain
+    type: static
+
+  - source: booking-domain
+    target: shared-kernel
+    type: static
+
+  - source: customer-domain
+    target: shared-kernel
+    type: static

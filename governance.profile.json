@@ -1,0 +1,74 @@
+{
+  "name": "Anarchitecture TypeScript Workspace Demo",
+  "description": "Standalone governance profile for a plain TypeScript Yarn workspace demo.",
+  "boundaryPolicySource": "profile",
+  "layers": [
+    "interface",
+    "application",
+    "infrastructure",
+    "domain"
+  ],
+  "rules": {
+    "domain-boundary": {
+      "enabled": true,
+      "severity": "error"
+    },
+    "layer-boundary": {
+      "enabled": true,
+      "severity": "error"
+    },
+    "ownership-presence": {
+      "enabled": true,
+      "severity": "warning"
+    },
+    "missing-domain": {
+      "enabled": true,
+      "severity": "error",
+      "options": {
+        "required": true
+      }
+    },
+    "missing-layer": {
+      "enabled": true,
+      "severity": "error",
+      "options": {
+        "required": true
+      }
+    },
+    "tag-convention": {
+      "enabled": true,
+      "severity": "warning",
+      "options": {
+        "requiredPrefixes": ["domain", "layer"],
+        "allowedPrefixes": ["domain", "layer"],
+        "prefixSeparator": ":"
+      }
+    }
+  },
+  "allowedLayerDependencies": {
+    "interface": ["interface", "application", "domain"],
+    "application": ["application", "domain"],
+    "infrastructure": ["infrastructure", "application", "domain"],
+    "domain": ["domain"]
+  },
+  "allowedDomainDependencies": {
+    "booking": ["shared"],
+    "customer": ["shared"],
+    "shared": []
+  },
+  "ownership": {
+    "required": true,
+    "metadataField": "owner"
+  },
+  "health": {
+    "statusThresholds": {
+      "goodMinScore": 90,
+      "warningMinScore": 70
+    }
+  },
+  "metrics": {
+    "architecture": 1,
+    "ownership": 1,
+    "metadata": 1
+  }
+}
