@@ -9,13 +9,17 @@
     "build": "tsc -b",
     "clean": "tsc -b --clean && find apps packages -type d -name dist -prune -exec rm -rf {} +",
     "rebuild": "yarn clean && yarn build",
+    "governance:profile": "agov profile validate --profile governance.profile.json --format table",
+    "governance:workspace": "agov workspace validate --workspace governance.workspace.yaml --format table",
+    "governance:inspect": "agov inspect --workspace governance.workspace.yaml --format table",
+    "governance:dependencies": "agov dependencies --workspace governance.workspace.yaml --format table",
+    "governance:assess": "agov assess --workspace governance.workspace.yaml --profile governance.profile.json --format table",
     "governance:check": "agov check --workspace governance.workspace.yaml --profile governance.profile.json",
-    "governance:check:table": "agov check --workspace governance.workspace.yaml --profile governance.profile.json --format table",
-    "governance:check:json": "agov check --workspace governance.workspace.yaml --profile governance.profile.json --format json",
-    "governance:report": "agov check --workspace governance.workspace.yaml --profile governance.profile.json --format markdown --output governance-report.md"
+    "governance:report": "agov assess --workspace governance.workspace.yaml --profile governance.profile.json --format markdown --output governance-report.md",
+    "governance:json": "agov assess --workspace governance.workspace.yaml --profile governance.profile.json --format json --output governance-assessment.json"
   },
   "devDependencies": {
-    "@anarchitects/governance-cli": "^0.0.4",
+    "@anarchitects/governance-cli": "^0.1.0",
     "typescript": "~5.9.2"
   }
 }
