@@ -19,7 +19,7 @@
     "governance:json": "agov assess --workspace governance.workspace.yaml --profile governance.profile.json --format json --output governance-assessment.json"
   },
   "devDependencies": {
-    "@anarchitects/governance-cli": "^0.1.0",
+    "@anarchitects/governance-cli": "^0.2.0",
     "typescript": "~5.9.2"
   }
 }
