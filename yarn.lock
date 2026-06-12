@@ -5,22 +5,22 @@ __metadata:
   version: 10
   cacheKey: 10c0
 
-"@anarchitects/governance-cli@npm:^0.2.0":
-  version: 0.2.0
-  resolution: "@anarchitects/governance-cli@npm:0.2.0"
+"@anarchitects/governance-cli@npm:^0.4.0":
+  version: 0.4.0
+  resolution: "@anarchitects/governance-cli@npm:0.4.0"
   dependencies:
-    "@anarchitects/governance-core": "npm:^0.1.1"
+    "@anarchitects/governance-core": "npm:^0.3.0"
     yaml: "npm:^2.8.1"
   bin:
     agov: dist/bin/agov.js
-  checksum: 10c0/4c7edd218805b4fb37a716a139e380c1037421489ea199e4968355f120204e6746d5878e56799f4c6492f6faea1ff89ef4950b04b730dbd367319c0979fecbe3
+  checksum: 10c0/4ac103781f799cf897494a852886e12bbb43e40a4886cfe6196756d7bfc05523290869ef460d538bc9bbc56e0aee7f4e9b62fbdca81b1a1d67f7d6f90f1d81ea
   languageName: node
   linkType: hard
 
-"@anarchitects/governance-core@npm:^0.1.1":
-  version: 0.1.1
-  resolution: "@anarchitects/governance-core@npm:0.1.1"
-  checksum: 10c0/b575a51e670d7df8249df33dbc886098bc54964206b70d6f967b300862b1ac217ccae982eb30af9705a12fbc12dd3c6c5a7d93d31101bd30dd57281a1611af70
+"@anarchitects/governance-core@npm:^0.3.0":
+  version: 0.3.0
+  resolution: "@anarchitects/governance-core@npm:0.3.0"
+  checksum: 10c0/60fa161d4f0a6b75b4ae68df6f0e8799c792bd69cd39a2095209ef34c1d62192b6c2bd16c4dd027beb71c4d20b86c3e11da92ec58ece609b94e30aa097623165
   languageName: node
   linkType: hard
 
@@ -82,7 +82,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "cli-standalone@workspace:."
   dependencies:
-    "@anarchitects/governance-cli": "npm:^0.2.0"
+    "@anarchitects/governance-cli": "npm:^0.4.0"
     typescript: "npm:~5.9.2"
   languageName: unknown
   linkType: soft

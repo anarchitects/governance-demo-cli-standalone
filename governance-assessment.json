@@ -1,0 +1,1286 @@
+{
+  "command": "assess",
+  "success": true,
+  "assessment": {
+    "workspace": {
+      "id": "workspace:anarchitecture-demo-typescript-yarn-workspace",
+      "name": "anarchitecture-demo-typescript-yarn-workspace",
+      "root": ".",
+      "nodes": [
+        {
+          "id": "app:booking-api",
+          "kind": "service",
+          "tags": [
+            "domain:booking",
+            "layer:interface"
+          ],
+          "metadata": {
+            "owner": "platform-team"
+          },
+          "name": "booking-api",
+          "technology": "typescript",
+          "sourceSystem": "yarn",
+          "root": "apps/booking-api",
+          "path": "apps/booking-api",
+          "classification": {
+            "domain": "booking",
+            "layer": "interface"
+          },
+          "ownership": {
+            "team": "platform-team"
+          }
+        },
+        {
+          "id": "package:booking-application",
+          "kind": "library",
+          "tags": [
+            "domain:booking",
+            "layer:application"
+          ],
+          "metadata": {
+            "owner": "booking-team"
+          },
+          "name": "booking-application",
+          "technology": "typescript",
+          "sourceSystem": "yarn",
+          "root": "packages/booking-application",
+          "path": "packages/booking-application",
+          "classification": {
+            "domain": "booking",
+            "layer": "application"
+          },
+          "ownership": {
+            "team": "booking-team"
+          }
+        },
+        {
+          "id": "package:booking-domain",
+          "kind": "library",
+          "tags": [
+            "domain:booking",
+            "layer:domain"
+          ],
+          "metadata": {
+            "owner": "booking-team"
+          },
+          "name": "booking-domain",
+          "technology": "typescript",
+          "sourceSystem": "yarn",
+          "root": "packages/booking-domain",
+          "path": "packages/booking-domain",
+          "classification": {
+            "domain": "booking",
+            "layer": "domain"
+          },
+          "ownership": {
+            "team": "booking-team"
+          }
+        },
+        {
+          "id": "package:booking-infrastructure",
+          "kind": "library",
+          "tags": [
+            "domain:booking",
+            "layer:infrastructure"
+          ],
+          "metadata": {
+            "owner": "booking-team"
+          },
+          "name": "booking-infrastructure",
+          "technology": "typescript",
+          "sourceSystem": "yarn",
+          "root": "packages/booking-infrastructure",
+          "path": "packages/booking-infrastructure",
+          "classification": {
+            "domain": "booking",
+            "layer": "infrastructure"
+          },
+          "ownership": {
+            "team": "booking-team"
+          }
+        },
+        {
+          "id": "package:booking-interface",
+          "kind": "library",
+          "tags": [
+            "domain:booking",
+            "layer:interface"
+          ],
+          "metadata": {
+            "owner": "booking-team"
+          },
+          "name": "booking-interface",
+          "technology": "typescript",
+          "sourceSystem": "yarn",
+          "root": "packages/booking-interface",
+          "path": "packages/booking-interface",
+          "classification": {
+            "domain": "booking",
+            "layer": "interface"
+          },
+          "ownership": {
+            "team": "booking-team"
+          }
+        },
+        {
+          "id": "package:customer-domain",
+          "kind": "library",
+          "tags": [
+            "domain:customer",
+            "layer:domain"
+          ],
+          "metadata": {
+            "owner": "customer-team"
+          },
+          "name": "customer-domain",
+          "technology": "typescript",
+          "sourceSystem": "yarn",
+          "root": "packages/customer-domain",
+          "path": "packages/customer-domain",
+          "classification": {
+            "domain": "customer",
+            "layer": "domain"
+          },
+          "ownership": {
+            "team": "customer-team"
+          }
+        },
+        {
+          "id": "package:shared-kernel",
+          "kind": "library",
+          "tags": [
+            "domain:shared",
+            "layer:domain"
+          ],
+          "metadata": {
+            "owner": "platform-team"
+          },
+          "name": "shared-kernel",
+          "technology": "typescript",
+          "sourceSystem": "yarn",
+          "root": "packages/shared-kernel",
+          "path": "packages/shared-kernel",
+          "classification": {
+            "domain": "shared",
+            "layer": "domain"
+          },
+          "ownership": {
+            "team": "platform-team"
+          }
+        }
+      ],
+      "relations": [
+        {
+          "id": "dependency:booking-api->booking-interface",
+          "sourceNodeId": "app:booking-api",
+          "targetNodeId": "package:booking-interface",
+          "kind": "dependency",
+          "metadata": {
+            "dependencyType": "static"
+          }
+        },
+        {
+          "id": "dependency:booking-application->booking-domain",
+          "sourceNodeId": "package:booking-application",
+          "targetNodeId": "package:booking-domain",
+          "kind": "dependency",
+          "metadata": {
+            "dependencyType": "static"
+          }
+        },
+        {
+          "id": "dependency:booking-domain->shared-kernel",
+          "sourceNodeId": "package:booking-domain",
+          "targetNodeId": "package:shared-kernel",
+          "kind": "dependency",
+          "metadata": {
+            "dependencyType": "static"
+          }
+        },
+        {
+          "id": "dependency:booking-infrastructure->booking-domain",
+          "sourceNodeId": "package:booking-infrastructure",
+          "targetNodeId": "package:booking-domain",
+          "kind": "dependency",
+          "metadata": {
+            "dependencyType": "static"
+          }
+        },
+        {
+          "id": "dependency:booking-interface->booking-application",
+          "sourceNodeId": "package:booking-interface",
+          "targetNodeId": "package:booking-application",
+          "kind": "dependency",
+          "metadata": {
+            "dependencyType": "static"
+          }
+        },
+        {
+          "id": "dependency:customer-domain->shared-kernel",
+          "sourceNodeId": "package:customer-domain",
+          "targetNodeId": "package:shared-kernel",
+          "kind": "dependency",
+          "metadata": {
+            "dependencyType": "static"
+          }
+        }
+      ],
+      "capabilities": [
+        {
+          "id": "capability:manual-workspace",
+          "data": {
+            "format": "yaml",
+            "schemaVersion": 1
+          }
+        }
+      ],
+      "metadata": {
+        "sourceSystem": "yarn",
+        "technology": "typescript"
+      }
+    },
+    "profile": "Anarchitecture TypeScript Workspace Demo",
+    "warnings": [],
+    "exceptions": {
+      "summary": {
+        "declaredCount": 0,
+        "matchedCount": 0,
+        "suppressedPolicyViolationCount": 0,
+        "suppressedConformanceFindingCount": 0,
+        "unusedExceptionCount": 0,
+        "activeExceptionCount": 0,
+        "staleExceptionCount": 0,
+        "expiredExceptionCount": 0,
+        "reactivatedPolicyViolationCount": 0,
+        "reactivatedConformanceFindingCount": 0
+      },
+      "used": [],
+      "unused": [],
+      "suppressedFindings": [],
+      "reactivatedFindings": []
+    },
+    "violations": [
+      {
+        "id": "app:booking-api:documentation-gap",
+        "ruleId": "documentation-gap",
+        "subjectId": "app:booking-api",
+        "severity": "warning",
+        "category": "documentation",
+        "message": "Missing documentation metadata for node booking-api.",
+        "reference": {
+          "nodeId": "app:booking-api"
+        },
+        "details": {
+          "metadataKeys": [
+            "documentation"
+          ],
+          "requireAny": true,
+          "matchedMetadataKeys": []
+        },
+        "recommendation": "Populate the configured documentation metadata on the node."
+      },
+      {
+        "id": "package:booking-application:documentation-gap",
+        "ruleId": "documentation-gap",
+        "subjectId": "package:booking-application",
+        "severity": "warning",
+        "category": "documentation",
+        "message": "Missing documentation metadata for node booking-application.",
+        "reference": {
+          "nodeId": "package:booking-application"
+        },
+        "details": {
+          "metadataKeys": [
+            "documentation"
+          ],
+          "requireAny": true,
+          "matchedMetadataKeys": []
+        },
+        "recommendation": "Populate the configured documentation metadata on the node."
+      },
+      {
+        "id": "package:booking-domain:documentation-gap",
+        "ruleId": "documentation-gap",
+        "subjectId": "package:booking-domain",
+        "severity": "warning",
+        "category": "documentation",
+        "message": "Missing documentation metadata for node booking-domain.",
+        "reference": {
+          "nodeId": "package:booking-domain"
+        },
+        "details": {
+          "metadataKeys": [
+            "documentation"
+          ],
+          "requireAny": true,
+          "matchedMetadataKeys": []
+        },
+        "recommendation": "Populate the configured documentation metadata on the node."
+      },
+      {
+        "id": "package:booking-infrastructure:documentation-gap",
+        "ruleId": "documentation-gap",
+        "subjectId": "package:booking-infrastructure",
+        "severity": "warning",
+        "category": "documentation",
+        "message": "Missing documentation metadata for node booking-infrastructure.",
+        "reference": {
+          "nodeId": "package:booking-infrastructure"
+        },
+        "details": {
+          "metadataKeys": [
+            "documentation"
+          ],
+          "requireAny": true,
+          "matchedMetadataKeys": []
+        },
+        "recommendation": "Populate the configured documentation metadata on the node."
+      },
+      {
+        "id": "package:booking-interface:documentation-gap",
+        "ruleId": "documentation-gap",
+        "subjectId": "package:booking-interface",
+        "severity": "warning",
+        "category": "documentation",
+        "message": "Missing documentation metadata for node booking-interface.",
+        "reference": {
+          "nodeId": "package:booking-interface"
+        },
+        "details": {
+          "metadataKeys": [
+            "documentation"
+          ],
+          "requireAny": true,
+          "matchedMetadataKeys": []
+        },
+        "recommendation": "Populate the configured documentation metadata on the node."
+      },
+      {
+        "id": "package:customer-domain:documentation-gap",
+        "ruleId": "documentation-gap",
+        "subjectId": "package:customer-domain",
+        "severity": "warning",
+        "category": "documentation",
+        "message": "Missing documentation metadata for node customer-domain.",
+        "reference": {
+          "nodeId": "package:customer-domain"
+        },
+        "details": {
+          "metadataKeys": [
+            "documentation"
+          ],
+          "requireAny": true,
+          "matchedMetadataKeys": []
+        },
+        "recommendation": "Populate the configured documentation metadata on the node."
+      },
+      {
+        "id": "package:shared-kernel:documentation-gap",
+        "ruleId": "documentation-gap",
+        "subjectId": "package:shared-kernel",
+        "severity": "warning",
+        "category": "documentation",
+        "message": "Missing documentation metadata for node shared-kernel.",
+        "reference": {
+          "nodeId": "package:shared-kernel"
+        },
+        "details": {
+          "metadataKeys": [
+            "documentation"
+          ],
+          "requireAny": true,
+          "matchedMetadataKeys": []
+        },
+        "recommendation": "Populate the configured documentation metadata on the node."
+      }
+    ],
+    "signals": [
+      {
+        "id": "signal-4a3e5e3ba89a",
+        "type": "structural-dependency",
+        "nodeId": "app:booking-api",
+        "relationId": "dependency:booking-api->booking-interface",
+        "relatedNodeIds": [
+          "app:booking-api",
+          "package:booking-interface"
+        ],
+        "relatedRelationIds": [
+          "dependency:booking-api->booking-interface"
+        ],
+        "severity": "info",
+        "category": "dependency",
+        "message": "Dependency: app:booking-api -> package:booking-interface.",
+        "metadata": {
+          "dependencyType": "static"
+        },
+        "source": "graph",
+        "createdAt": "2026-06-11T20:00:47.164Z"
+      },
+      {
+        "id": "signal-befe12f13b13",
+        "type": "structural-dependency",
+        "nodeId": "package:booking-application",
+        "relationId": "dependency:booking-application->booking-domain",
+        "relatedNodeIds": [
+          "package:booking-application",
+          "package:booking-domain"
+        ],
+        "relatedRelationIds": [
+          "dependency:booking-application->booking-domain"
+        ],
+        "severity": "info",
+        "category": "dependency",
+        "message": "Dependency: package:booking-application -> package:booking-domain.",
+        "metadata": {
+          "dependencyType": "static"
+        },
+        "source": "graph",
+        "createdAt": "2026-06-11T20:00:47.164Z"
+      },
+      {
+        "id": "signal-16502c04e6cf",
+        "type": "structural-dependency",
+        "nodeId": "package:booking-domain",
+        "relationId": "dependency:booking-domain->shared-kernel",
+        "relatedNodeIds": [
+          "package:booking-domain",
+          "package:shared-kernel"
+        ],
+        "relatedRelationIds": [
+          "dependency:booking-domain->shared-kernel"
+        ],
+        "severity": "info",
+        "category": "dependency",
+        "message": "Dependency: package:booking-domain -> package:shared-kernel.",
+        "metadata": {
+          "dependencyType": "static"
+        },
+        "source": "graph",
+        "createdAt": "2026-06-11T20:00:47.164Z"
+      },
+      {
+        "id": "signal-1306d88579fd",
+        "type": "structural-dependency",
+        "nodeId": "package:booking-infrastructure",
+        "relationId": "dependency:booking-infrastructure->booking-domain",
+        "relatedNodeIds": [
+          "package:booking-domain",
+          "package:booking-infrastructure"
+        ],
+        "relatedRelationIds": [
+          "dependency:booking-infrastructure->booking-domain"
+        ],
+        "severity": "info",
+        "category": "dependency",
+        "message": "Dependency: package:booking-infrastructure -> package:booking-domain.",
+        "metadata": {
+          "dependencyType": "static"
+        },
+        "source": "graph",
+        "createdAt": "2026-06-11T20:00:47.164Z"
+      },
+      {
+        "id": "signal-2656ac590e8b",
+        "type": "structural-dependency",
+        "nodeId": "package:booking-interface",
+        "relationId": "dependency:booking-interface->booking-application",
+        "relatedNodeIds": [
+          "package:booking-application",
+          "package:booking-interface"
+        ],
+        "relatedRelationIds": [
+          "dependency:booking-interface->booking-application"
+        ],
+        "severity": "info",
+        "category": "dependency",
+        "message": "Dependency: package:booking-interface -> package:booking-application.",
+        "metadata": {
+          "dependencyType": "static"
+        },
+        "source": "graph",
+        "createdAt": "2026-06-11T20:00:47.164Z"
+      },
+      {
+        "id": "signal-93d8ea3eb7b8",
+        "type": "structural-dependency",
+        "nodeId": "package:customer-domain",
+        "relationId": "dependency:customer-domain->shared-kernel",
+        "relatedNodeIds": [
+          "package:customer-domain",
+          "package:shared-kernel"
+        ],
+        "relatedRelationIds": [
+          "dependency:customer-domain->shared-kernel"
+        ],
+        "severity": "info",
+        "category": "dependency",
+        "message": "Dependency: package:customer-domain -> package:shared-kernel.",
+        "metadata": {
+          "dependencyType": "static"
+        },
+        "source": "graph",
+        "createdAt": "2026-06-11T20:00:47.164Z"
+      },
+      {
+        "id": "signal-e5830e36238a",
+        "type": "documentation-gap",
+        "nodeId": "app:booking-api",
+        "relatedNodeIds": [
+          "app:booking-api"
+        ],
+        "severity": "warning",
+        "category": "documentation",
+        "message": "Missing documentation metadata for node booking-api.",
+        "metadata": {
+          "matchedMetadataKeys": [],
+          "metadataKeys": [
+            "documentation"
+          ],
+          "recommendation": "Populate the configured documentation metadata on the node.",
+          "requireAny": true,
+          "ruleId": "documentation-gap"
+        },
+        "source": "policy",
+        "createdAt": "2026-06-11T20:00:47.166Z"
+      },
+      {
+        "id": "signal-24a7590089f0",
+        "type": "documentation-gap",
+        "nodeId": "package:booking-application",
+        "relatedNodeIds": [
+          "package:booking-application"
+        ],
+        "severity": "warning",
+        "category": "documentation",
+        "message": "Missing documentation metadata for node booking-application.",
+        "metadata": {
+          "matchedMetadataKeys": [],
+          "metadataKeys": [
+            "documentation"
+          ],
+          "recommendation": "Populate the configured documentation metadata on the node.",
+          "requireAny": true,
+          "ruleId": "documentation-gap"
+        },
+        "source": "policy",
+        "createdAt": "2026-06-11T20:00:47.166Z"
+      },
+      {
+        "id": "signal-1bf57a9ba90b",
+        "type": "documentation-gap",
+        "nodeId": "package:booking-domain",
+        "relatedNodeIds": [
+          "package:booking-domain"
+        ],
+        "severity": "warning",
+        "category": "documentation",
+        "message": "Missing documentation metadata for node booking-domain.",
+        "metadata": {
+          "matchedMetadataKeys": [],
+          "metadataKeys": [
+            "documentation"
+          ],
+          "recommendation": "Populate the configured documentation metadata on the node.",
+          "requireAny": true,
+          "ruleId": "documentation-gap"
+        },
+        "source": "policy",
+        "createdAt": "2026-06-11T20:00:47.166Z"
+      },
+      {
+        "id": "signal-655cd59f1fbd",
+        "type": "documentation-gap",
+        "nodeId": "package:booking-infrastructure",
+        "relatedNodeIds": [
+          "package:booking-infrastructure"
+        ],
+        "severity": "warning",
+        "category": "documentation",
+        "message": "Missing documentation metadata for node booking-infrastructure.",
+        "metadata": {
+          "matchedMetadataKeys": [],
+          "metadataKeys": [
+            "documentation"
+          ],
+          "recommendation": "Populate the configured documentation metadata on the node.",
+          "requireAny": true,
+          "ruleId": "documentation-gap"
+        },
+        "source": "policy",
+        "createdAt": "2026-06-11T20:00:47.166Z"
+      },
+      {
+        "id": "signal-c23f1303ddcb",
+        "type": "documentation-gap",
+        "nodeId": "package:booking-interface",
+        "relatedNodeIds": [
+          "package:booking-interface"
+        ],
+        "severity": "warning",
+        "category": "documentation",
+        "message": "Missing documentation metadata for node booking-interface.",
+        "metadata": {
+          "matchedMetadataKeys": [],
+          "metadataKeys": [
+            "documentation"
+          ],
+          "recommendation": "Populate the configured documentation metadata on the node.",
+          "requireAny": true,
+          "ruleId": "documentation-gap"
+        },
+        "source": "policy",
+        "createdAt": "2026-06-11T20:00:47.166Z"
+      },
+      {
+        "id": "signal-055ef15d3fc0",
+        "type": "documentation-gap",
+        "nodeId": "package:customer-domain",
+        "relatedNodeIds": [
+          "package:customer-domain"
+        ],
+        "severity": "warning",
+        "category": "documentation",
+        "message": "Missing documentation metadata for node customer-domain.",
+        "metadata": {
+          "matchedMetadataKeys": [],
+          "metadataKeys": [
+            "documentation"
+          ],
+          "recommendation": "Populate the configured documentation metadata on the node.",
+          "requireAny": true,
+          "ruleId": "documentation-gap"
+        },
+        "source": "policy",
+        "createdAt": "2026-06-11T20:00:47.166Z"
+      },
+      {
+        "id": "signal-ccdf02b494aa",
+        "type": "documentation-gap",
+        "nodeId": "package:shared-kernel",
+        "relatedNodeIds": [
+          "package:shared-kernel"
+        ],
+        "severity": "warning",
+        "category": "documentation",
+        "message": "Missing documentation metadata for node shared-kernel.",
+        "metadata": {
+          "matchedMetadataKeys": [],
+          "metadataKeys": [
+            "documentation"
+          ],
+          "recommendation": "Populate the configured documentation metadata on the node.",
+          "requireAny": true,
+          "ruleId": "documentation-gap"
+        },
+        "source": "policy",
+        "createdAt": "2026-06-11T20:00:47.166Z"
+      }
+    ],
+    "measurements": [
+      {
+        "id": "architectural-entropy",
+        "name": "Architectural Entropy",
+        "family": "architecture",
+        "value": 0,
+        "score": 100,
+        "maxScore": 100,
+        "unit": "ratio",
+        "metadata": {
+          "nodeCount": 7,
+          "dependencyRelationCount": 6,
+          "crossDomainPenaltyWeight": 0
+        }
+      },
+      {
+        "id": "dependency-complexity",
+        "name": "Dependency Complexity",
+        "family": "architecture",
+        "value": 0.2143,
+        "score": 79,
+        "maxScore": 100,
+        "unit": "ratio",
+        "metadata": {
+          "nodeCount": 7,
+          "dependencyRelationCount": 6
+        }
+      },
+      {
+        "id": "domain-integrity",
+        "name": "Domain Integrity",
+        "family": "boundaries",
+        "value": 0,
+        "score": 100,
+        "maxScore": 100,
+        "unit": "ratio",
+        "metadata": {
+          "dependencyRelationCount": 6,
+          "violatingRelationWeight": 0
+        }
+      },
+      {
+        "id": "ownership-coverage",
+        "name": "Ownership Coverage",
+        "family": "ownership",
+        "value": 1,
+        "score": 100,
+        "maxScore": 100,
+        "unit": "ratio",
+        "metadata": {
+          "nodeCount": 7,
+          "ownedNodeCount": 7
+        }
+      },
+      {
+        "id": "documentation-completeness",
+        "name": "Documentation Completeness",
+        "family": "documentation",
+        "value": 0,
+        "score": 0,
+        "maxScore": 100,
+        "unit": "ratio",
+        "metadata": {
+          "nodeCount": 7,
+          "documentedNodeCount": 0
+        }
+      },
+      {
+        "id": "layer-integrity",
+        "name": "Layer Integrity",
+        "family": "boundaries",
+        "value": 0,
+        "score": 100,
+        "maxScore": 100,
+        "unit": "ratio",
+        "metadata": {
+          "dependencyRelationCount": 6,
+          "violatingRelationWeight": 0
+        }
+      }
+    ],
+    "signalBreakdown": {
+      "total": 13,
+      "bySource": [
+        {
+          "source": "graph",
+          "count": 6
+        },
+        {
+          "source": "conformance",
+          "count": 0
+        },
+        {
+          "source": "policy",
+          "count": 7
+        },
+        {
+          "source": "extension",
+          "count": 0
+        }
+      ],
+      "byType": [
+        {
+          "type": "structural-dependency",
+          "count": 6
+        },
+        {
+          "type": "documentation-gap",
+          "count": 7
+        }
+      ],
+      "bySeverity": [
+        {
+          "severity": "info",
+          "count": 6
+        },
+        {
+          "severity": "warning",
+          "count": 7
+        },
+        {
+          "severity": "error",
+          "count": 0
+        }
+      ]
+    },
+    "metricBreakdown": {
+      "families": [
+        {
+          "family": "architecture",
+          "score": 90,
+          "measurements": [
+            {
+              "id": "architectural-entropy",
+              "name": "Architectural Entropy",
+              "score": 100
+            },
+            {
+              "id": "dependency-complexity",
+              "name": "Dependency Complexity",
+              "score": 79
+            }
+          ]
+        },
+        {
+          "family": "boundaries",
+          "score": 100,
+          "measurements": [
+            {
+              "id": "domain-integrity",
+              "name": "Domain Integrity",
+              "score": 100
+            },
+            {
+              "id": "layer-integrity",
+              "name": "Layer Integrity",
+              "score": 100
+            }
+          ]
+        },
+        {
+          "family": "ownership",
+          "score": 100,
+          "measurements": [
+            {
+              "id": "ownership-coverage",
+              "name": "Ownership Coverage",
+              "score": 100
+            }
+          ]
+        },
+        {
+          "family": "documentation",
+          "score": 0,
+          "measurements": [
+            {
+              "id": "documentation-completeness",
+              "name": "Documentation Completeness",
+              "score": 0
+            }
+          ]
+        }
+      ]
+    },
+    "topIssues": [
+      {
+        "type": "documentation-gap",
+        "source": "policy",
+        "severity": "warning",
+        "count": 1,
+        "subjects": [
+          "app:booking-api"
+        ],
+        "ruleId": "documentation-gap",
+        "message": "Missing documentation metadata for node booking-api."
+      },
+      {
+        "type": "documentation-gap",
+        "source": "policy",
+        "severity": "warning",
+        "count": 1,
+        "subjects": [
+          "package:booking-application"
+        ],
+        "ruleId": "documentation-gap",
+        "message": "Missing documentation metadata for node booking-application."
+      },
+      {
+        "type": "documentation-gap",
+        "source": "policy",
+        "severity": "warning",
+        "count": 1,
+        "subjects": [
+          "package:booking-domain"
+        ],
+        "ruleId": "documentation-gap",
+        "message": "Missing documentation metadata for node booking-domain."
+      },
+      {
+        "type": "documentation-gap",
+        "source": "policy",
+        "severity": "warning",
+        "count": 1,
+        "subjects": [
+          "package:booking-infrastructure"
+        ],
+        "ruleId": "documentation-gap",
+        "message": "Missing documentation metadata for node booking-infrastructure."
+      },
+      {
+        "type": "documentation-gap",
+        "source": "policy",
+        "severity": "warning",
+        "count": 1,
+        "subjects": [
+          "package:booking-interface"
+        ],
+        "ruleId": "documentation-gap",
+        "message": "Missing documentation metadata for node booking-interface."
+      },
+      {
+        "type": "documentation-gap",
+        "source": "policy",
+        "severity": "warning",
+        "count": 1,
+        "subjects": [
+          "package:customer-domain"
+        ],
+        "ruleId": "documentation-gap",
+        "message": "Missing documentation metadata for node customer-domain."
+      },
+      {
+        "type": "documentation-gap",
+        "source": "policy",
+        "severity": "warning",
+        "count": 1,
+        "subjects": [
+          "package:shared-kernel"
+        ],
+        "ruleId": "documentation-gap",
+        "message": "Missing documentation metadata for node shared-kernel."
+      }
+    ],
+    "health": {
+      "score": 80,
+      "status": "warning",
+      "grade": "B",
+      "hotspots": [
+        "Documentation Completeness"
+      ],
+      "metricHotspots": [
+        {
+          "id": "documentation-completeness",
+          "name": "Documentation Completeness",
+          "score": 0
+        }
+      ],
+      "subjectHotspots": [
+        {
+          "subjectId": "app:booking-api",
+          "subjectType": "node",
+          "count": 1,
+          "dominantIssueTypes": [
+            "documentation-gap"
+          ]
+        },
+        {
+          "subjectId": "package:booking-application",
+          "subjectType": "node",
+          "count": 1,
+          "dominantIssueTypes": [
+            "documentation-gap"
+          ]
+        },
+        {
+          "subjectId": "package:booking-domain",
+          "subjectType": "node",
+          "count": 1,
+          "dominantIssueTypes": [
+            "documentation-gap"
+          ]
+        },
+        {
+          "subjectId": "package:booking-infrastructure",
+          "subjectType": "node",
+          "count": 1,
+          "dominantIssueTypes": [
+            "documentation-gap"
+          ]
+        },
+        {
+          "subjectId": "package:booking-interface",
+          "subjectType": "node",
+          "count": 1,
+          "dominantIssueTypes": [
+            "documentation-gap"
+          ]
+        }
+      ],
+      "explainability": {
+        "summary": "Warning health at 80. Weakest metrics are Documentation Completeness, Dependency Complexity. Dominant issue types are documentation-gap, documentation-gap, documentation-gap.",
+        "statusReason": "Score 80 is below the good threshold (90) but at or above the warning threshold (70).",
+        "weakestMetrics": [
+          {
+            "id": "documentation-completeness",
+            "name": "Documentation Completeness",
+            "score": 0
+          },
+          {
+            "id": "dependency-complexity",
+            "name": "Dependency Complexity",
+            "score": 79
+          }
+        ],
+        "dominantIssues": [
+          {
+            "type": "documentation-gap",
+            "source": "policy",
+            "severity": "warning",
+            "count": 1,
+            "subjects": [
+              "app:booking-api"
+            ],
+            "ruleId": "documentation-gap",
+            "message": "Missing documentation metadata for node booking-api."
+          },
+          {
+            "type": "documentation-gap",
+            "source": "policy",
+            "severity": "warning",
+            "count": 1,
+            "subjects": [
+              "package:booking-application"
+            ],
+            "ruleId": "documentation-gap",
+            "message": "Missing documentation metadata for node booking-application."
+          },
+          {
+            "type": "documentation-gap",
+            "source": "policy",
+            "severity": "warning",
+            "count": 1,
+            "subjects": [
+              "package:booking-domain"
+            ],
+            "ruleId": "documentation-gap",
+            "message": "Missing documentation metadata for node booking-domain."
+          }
+        ]
+      }
+    },
+    "recommendations": []
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "app:booking-api",
+        "kind": "service",
+        "tags": [
+          "domain:booking",
+          "layer:interface"
+        ],
+        "metadata": {
+          "owner": "platform-team"
+        },
+        "name": "booking-api",
+        "technology": "typescript",
+        "sourceSystem": "yarn",
+        "root": "apps/booking-api",
+        "path": "apps/booking-api",
+        "classification": {
+          "domain": "booking",
+          "layer": "interface"
+        },
+        "ownership": {
+          "team": "platform-team"
+        }
+      },
+      {
+        "id": "package:booking-application",
+        "kind": "library",
+        "tags": [
+          "domain:booking",
+          "layer:application"
+        ],
+        "metadata": {
+          "owner": "booking-team"
+        },
+        "name": "booking-application",
+        "technology": "typescript",
+        "sourceSystem": "yarn",
+        "root": "packages/booking-application",
+        "path": "packages/booking-application",
+        "classification": {
+          "domain": "booking",
+          "layer": "application"
+        },
+        "ownership": {
+          "team": "booking-team"
+        }
+      },
+      {
+        "id": "package:booking-domain",
+        "kind": "library",
+        "tags": [
+          "domain:booking",
+          "layer:domain"
+        ],
+        "metadata": {
+          "owner": "booking-team"
+        },
+        "name": "booking-domain",
+        "technology": "typescript",
+        "sourceSystem": "yarn",
+        "root": "packages/booking-domain",
+        "path": "packages/booking-domain",
+        "classification": {
+          "domain": "booking",
+          "layer": "domain"
+        },
+        "ownership": {
+          "team": "booking-team"
+        }
+      },
+      {
+        "id": "package:booking-infrastructure",
+        "kind": "library",
+        "tags": [
+          "domain:booking",
+          "layer:infrastructure"
+        ],
+        "metadata": {
+          "owner": "booking-team"
+        },
+        "name": "booking-infrastructure",
+        "technology": "typescript",
+        "sourceSystem": "yarn",
+        "root": "packages/booking-infrastructure",
+        "path": "packages/booking-infrastructure",
+        "classification": {
+          "domain": "booking",
+          "layer": "infrastructure"
+        },
+        "ownership": {
+          "team": "booking-team"
+        }
+      },
+      {
+        "id": "package:booking-interface",
+        "kind": "library",
+        "tags": [
+          "domain:booking",
+          "layer:interface"
+        ],
+        "metadata": {
+          "owner": "booking-team"
+        },
+        "name": "booking-interface",
+        "technology": "typescript",
+        "sourceSystem": "yarn",
+        "root": "packages/booking-interface",
+        "path": "packages/booking-interface",
+        "classification": {
+          "domain": "booking",
+          "layer": "interface"
+        },
+        "ownership": {
+          "team": "booking-team"
+        }
+      },
+      {
+        "id": "package:customer-domain",
+        "kind": "library",
+        "tags": [
+          "domain:customer",
+          "layer:domain"
+        ],
+        "metadata": {
+          "owner": "customer-team"
+        },
+        "name": "customer-domain",
+        "technology": "typescript",
+        "sourceSystem": "yarn",
+        "root": "packages/customer-domain",
+        "path": "packages/customer-domain",
+        "classification": {
+          "domain": "customer",
+          "layer": "domain"
+        },
+        "ownership": {
+          "team": "customer-team"
+        }
+      },
+      {
+        "id": "package:shared-kernel",
+        "kind": "library",
+        "tags": [
+          "domain:shared",
+          "layer:domain"
+        ],
+        "metadata": {
+          "owner": "platform-team"
+        },
+        "name": "shared-kernel",
+        "technology": "typescript",
+        "sourceSystem": "yarn",
+        "root": "packages/shared-kernel",
+        "path": "packages/shared-kernel",
+        "classification": {
+          "domain": "shared",
+          "layer": "domain"
+        },
+        "ownership": {
+          "team": "platform-team"
+        }
+      }
+    ],
+    "relations": [
+      {
+        "id": "dependency:booking-api->booking-interface",
+        "sourceNodeId": "app:booking-api",
+        "targetNodeId": "package:booking-interface",
+        "kind": "dependency",
+        "metadata": {
+          "dependencyType": "static"
+        }
+      },
+      {
+        "id": "dependency:booking-application->booking-domain",
+        "sourceNodeId": "package:booking-application",
+        "targetNodeId": "package:booking-domain",
+        "kind": "dependency",
+        "metadata": {
+          "dependencyType": "static"
+        }
+      },
+      {
+        "id": "dependency:booking-domain->shared-kernel",
+        "sourceNodeId": "package:booking-domain",
+        "targetNodeId": "package:shared-kernel",
+        "kind": "dependency",
+        "metadata": {
+          "dependencyType": "static"
+        }
+      },
+      {
+        "id": "dependency:booking-infrastructure->booking-domain",
+        "sourceNodeId": "package:booking-infrastructure",
+        "targetNodeId": "package:booking-domain",
+        "kind": "dependency",
+        "metadata": {
+          "dependencyType": "static"
+        }
+      },
+      {
+        "id": "dependency:booking-interface->booking-application",
+        "sourceNodeId": "package:booking-interface",
+        "targetNodeId": "package:booking-application",
+        "kind": "dependency",
+        "metadata": {
+          "dependencyType": "static"
+        }
+      },
+      {
+        "id": "dependency:customer-domain->shared-kernel",
+        "sourceNodeId": "package:customer-domain",
+        "targetNodeId": "package:shared-kernel",
+        "kind": "dependency",
+        "metadata": {
+          "dependencyType": "static"
+        }
+      }
+    ]
+  },
+  "artifacts": {
+    "capabilities": [
+      {
+        "id": "capability:manual-workspace",
+        "data": {
+          "format": "yaml",
+          "schemaVersion": 1
+        }
+      }
+    ],
+    "diagnostics": [],
+    "extensionDiagnostics": []
+  }
+}

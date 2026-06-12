@@ -67,8 +67,11 @@
     }
   },
   "metrics": {
-    "architecture": 1,
-    "ownership": 1,
-    "metadata": 1
+    "architectural-entropy": 1,
+    "dependency-complexity": 0.25,
+    "domain-integrity": 1,
+    "ownership-coverage": 1,
+    "documentation-completeness": 1,
+    "layer-integrity": 1
   }
 }

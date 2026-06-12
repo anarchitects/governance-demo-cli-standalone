@@ -1,92 +1,177 @@
 schemaVersion: 1
 workspace:
+  id: workspace:anarchitecture-demo-typescript-yarn-workspace
   name: anarchitecture-demo-typescript-yarn-workspace
-  root: "."
-projects:
-  - name: booking-api
+  root: .
+  metadata:
+    sourceSystem: yarn
+    technology: typescript
+nodes:
+  - id: app:booking-api
+    name: booking-api
+    kind: service
+    technology: typescript
+    sourceSystem: yarn
     root: apps/booking-api
-    type: application
+    path: apps/booking-api
+    classification:
+      domain: booking
+      layer: interface
+    ownership:
+      team: platform-team
     tags:
       - domain:booking
       - layer:interface
     metadata:
       owner: platform-team
 
-  - name: booking-interface
+  - id: package:booking-interface
+    name: booking-interface
+    kind: library
+    technology: typescript
+    sourceSystem: yarn
     root: packages/booking-interface
-    type: library
+    path: packages/booking-interface
+    classification:
+      domain: booking
+      layer: interface
+    ownership:
+      team: booking-team
     tags:
       - domain:booking
       - layer:interface
     metadata:
       owner: booking-team
 
-  - name: booking-application
+  - id: package:booking-application
+    name: booking-application
+    kind: library
+    technology: typescript
+    sourceSystem: yarn
     root: packages/booking-application
-    type: library
+    path: packages/booking-application
+    classification:
+      domain: booking
+      layer: application
+    ownership:
+      team: booking-team
     tags:
       - domain:booking
       - layer:application
     metadata:
       owner: booking-team
 
-  - name: booking-domain
+  - id: package:booking-domain
+    name: booking-domain
+    kind: library
+    technology: typescript
+    sourceSystem: yarn
     root: packages/booking-domain
-    type: library
+    path: packages/booking-domain
+    classification:
+      domain: booking
+      layer: domain
+    ownership:
+      team: booking-team
     tags:
       - domain:booking
       - layer:domain
     metadata:
       owner: booking-team
 
-  - name: booking-infrastructure
+  - id: package:booking-infrastructure
+    name: booking-infrastructure
+    kind: library
+    technology: typescript
+    sourceSystem: yarn
     root: packages/booking-infrastructure
-    type: library
+    path: packages/booking-infrastructure
+    classification:
+      domain: booking
+      layer: infrastructure
+    ownership:
+      team: booking-team
     tags:
       - domain:booking
       - layer:infrastructure
     metadata:
       owner: booking-team
 
-  - name: customer-domain
+  - id: package:customer-domain
+    name: customer-domain
+    kind: library
+    technology: typescript
+    sourceSystem: yarn
     root: packages/customer-domain
-    type: library
+    path: packages/customer-domain
+    classification:
+      domain: customer
+      layer: domain
+    ownership:
+      team: customer-team
     tags:
       - domain:customer
       - layer:domain
     metadata:
       owner: customer-team
 
-  - name: shared-kernel
+  - id: package:shared-kernel
+    name: shared-kernel
+    kind: library
+    technology: typescript
+    sourceSystem: yarn
     root: packages/shared-kernel
-    type: library
+    path: packages/shared-kernel
+    classification:
+      domain: shared
+      layer: domain
+    ownership:
+      team: platform-team
     tags:
       - domain:shared
       - layer:domain
     metadata:
       owner: platform-team
 
-dependencies:
-  - source: booking-api
-    target: booking-interface
-    type: static
+relations:
+  - id: dependency:booking-api->booking-interface
+    sourceNodeId: app:booking-api
+    targetNodeId: package:booking-interface
+    kind: dependency
+    metadata:
+      dependencyType: static
 
-  - source: booking-interface
-    target: booking-application
-    type: static
+  - id: dependency:booking-interface->booking-application
+    sourceNodeId: package:booking-interface
+    targetNodeId: package:booking-application
+    kind: dependency
+    metadata:
+      dependencyType: static
 
-  - source: booking-application
-    target: booking-domain
-    type: static
+  - id: dependency:booking-application->booking-domain
+    sourceNodeId: package:booking-application
+    targetNodeId: package:booking-domain
+    kind: dependency
+    metadata:
+      dependencyType: static
 
-  - source: booking-infrastructure
-    target: booking-domain
-    type: static
+  - id: dependency:booking-infrastructure->booking-domain
+    sourceNodeId: package:booking-infrastructure
+    targetNodeId: package:booking-domain
+    kind: dependency
+    metadata:
+      dependencyType: static
 
-  - source: booking-domain
-    target: shared-kernel
-    type: static
+  - id: dependency:booking-domain->shared-kernel
+    sourceNodeId: package:booking-domain
+    targetNodeId: package:shared-kernel
+    kind: dependency
+    metadata:
+      dependencyType: static
 
-  - source: customer-domain
-    target: shared-kernel
-    type: static
+  - id: dependency:customer-domain->shared-kernel
+    sourceNodeId: package:customer-domain
+    targetNodeId: package:shared-kernel
+    kind: dependency
+    metadata:
+      dependencyType: static
