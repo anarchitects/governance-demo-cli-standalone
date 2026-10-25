@@ -1,0 +1,76 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended",
+    ":dependencyDashboard",
+    ":semanticCommits",
+    ":semanticCommitTypeAll(chore)"
+  ],
+  "enabledManagers": ["npm"],
+  "includePaths": [
+    "apps/booking-api/package.json",
+    "package.json",
+    "packages/booking-application/package.json",
+    "packages/booking-domain/package.json",
+    "packages/booking-infrastructure/package.json",
+    "packages/booking-interface/package.json",
+    "packages/customer-domain/package.json",
+    "packages/shared-kernel/package.json",
+    ".yarnrc.yml",
+    "yarn.lock"
+  ],
+  "timezone": "Europe/Brussels",
+  "schedule": ["before 6am on the first day of the month"],
+  "labels": ["dependencies"],
+  "rangeStrategy": "bump",
+  "semanticCommitScope": null,
+  "prConcurrentLimit": 1,
+  "prHourlyLimit": 1,
+  "automerge": false,
+  "platformAutomerge": false,
+  "vulnerabilityAlerts": {
+    "enabled": false
+  },
+  "osvVulnerabilityAlerts": false,
+  "lockFileMaintenance": {
+    "enabled": true,
+    "schedule": ["before 6am on the first day of the month"],
+    "automerge": false
+  },
+  "packageRules": [
+    {
+      "description": "Override preset grouping; keep production updates and majors separate unless explicitly grouped below.",
+      "matchManagers": ["npm"],
+      "groupName": null,
+      "automerge": false
+    },
+    {
+      "description": "Group ordinary development tools only for minor and patch updates.",
+      "matchManagers": ["npm"],
+      "matchDepTypes": ["devDependencies"],
+      "matchPackageNames": ["typescript"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "groupName": "development-updates"
+    },
+    {
+      "matchManagers": ["npm"],
+      "matchPackageNames": [
+        "@anarchitects/governance-cli",
+        "@anarchitects/governance-adapter-typescript"
+      ],
+      "matchUpdateTypes": ["minor", "patch"],
+      "groupName": "governance-tooling"
+    },
+    {
+      "description": "Keep major upgrades separate and require manual review for every update.",
+      "matchManagers": ["npm"],
+      "matchUpdateTypes": ["major"],
+      "groupName": null,
+      "automerge": false
+    }
+  ],
+  "prBodyNotes": [
+    "Manual review required. Preserve existing runtime compatibility; package upgrades do not perform Nx migrations or authorize a Nest 12/Native migration.",
+    "For published packages, review the affected Nx projects and correct Conventional Commit/release intent before merging. No automatic publishing or merging."
+  ]
+}
